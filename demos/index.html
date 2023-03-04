@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-md-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../demos/theme.css" />
+    <link rel="stylesheet" href="../src/m3/styles/index.css" />
+    <script type="module" src="../src/m3/button/common-button.ts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.0-beta.2/dist/iconify-icon.min.js"></script>
+  </head>
+  <body>
+    <md-button variant="outlined" leading>
+      <iconify-icon
+        slot="leading"
+        icon="material-symbols:send-outline"
+      ></iconify-icon>
+      Send
+    </md-button>
+    <md-button variant="filled" custom="a href='#'">Link</md-button>
+
+    <div
+      style="
+        cursor: pointer;
+        border: 1px solid var(--md-sys-color-outline);
+        border-radius: var(--md-sys-shape-corner-large);
+        height: 500px;
+        width: 500px;
+      "
+      tabindex="0"
+      aria-label="A box with ripple"
+    >
+      <md-ripple></md-ripple>
+    </div>
+
+    <script>
+      /** @type {HTMLButtonElement} */
+      const btn = document.querySelector('md-button')
+      btn.addEventListener('click', (e) => {
+        btn.disabled = true
+        setTimeout(() => {
+          btn.disabled = false
+        }, 2000)
+      })
+    </script>
+  </body>
+</html>

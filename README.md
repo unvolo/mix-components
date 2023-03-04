@@ -1,2 +1,7 @@
 # mix-components
-Mixins and Extendings.
+
+> Mixins and Extendings.
+
+## Design specifications
+
+- [x] Material Design 3 (Material You)
