@@ -11,26 +11,27 @@ export const M3CommonButtonStyles = css`
   [part~='button'] {
     border-radius: var(--md-sys-shape-corner-full);
     height: 40px;
+    transition: box-shadow var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
     z-index: var(--md-sys-elev-0);
 
     ${TypographySystem.generateStyle('label-large')}
   }
   /* Colors */
   :host {
-    --md-comp-button-theme-color: var(--md-sys-color-primary);
-    --md-comp-button-on-theme-color: var(--md-sys-color-on-primary);
+    --md-button-theme-color: var(--md-sys-color-primary);
+    --md-button-on-theme-color: var(--md-sys-color-on-primary);
   }
   :host([color='secondary']) {
-    --md-comp-button-theme-color: var(--md-sys-color-secondary);
-    --md-comp-button-on-theme-color: var(--md-sys-color-on-secondary);
+    --md-button-theme-color: var(--md-sys-color-secondary);
+    --md-button-on-theme-color: var(--md-sys-color-on-secondary);
   }
   :host([color='tertiary']) {
-    --md-comp-button-theme-color: var(--md-sys-color-tertiary);
-    --md-comp-button-on-theme-color: var(--md-sys-color-on-tertiary);
+    --md-button-theme-color: var(--md-sys-color-tertiary);
+    --md-button-on-theme-color: var(--md-sys-color-on-tertiary);
   }
   /* Variants */
   :host([variant='text']) [part~='button'] {
-    color: var(--md-comp-button-theme-color);
+    color: var(--md-button-theme-color);
     min-width: 48px;
     padding: 0 12px;
   }
@@ -42,7 +43,7 @@ export const M3CommonButtonStyles = css`
   }
   :host([variant='outlined']) [part~='button'] {
     border: 1px solid var(--md-sys-color-outline);
-    color: var(--md-comp-button-theme-color);
+    color: var(--md-button-theme-color);
     padding: 0 23px;
   }
   :host([variant='outlined'][disabled]) [part~='button'] {
@@ -50,11 +51,11 @@ export const M3CommonButtonStyles = css`
     color: rgba(var(--md-sys-color-on-surface-rgb), 0.38);
   }
   :host([variant='filled']) [part~='button'] {
-    background-color: var(--md-comp-button-theme-color);
-    color: var(--md-comp-button-on-theme-color);
+    background-color: var(--md-button-theme-color);
+    color: var(--md-button-on-theme-color);
     padding: 0 24px;
   }
-  :host([variant='filled tonal']) [part~='button'] {
+  :host([variant='filled-tonal']) [part~='button'] {
     background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
     padding: 0 24px;
@@ -66,11 +67,19 @@ export const M3CommonButtonStyles = css`
     padding: 0 24px;
     z-index: var(--md-sys-elev-1);
   }
-  :host([variant~='filled'][disabled]) [part~='button'],
+  :host([variant='filled'][disabled]) [part~='button'],
   :host([variant='elevated'][disabled]) [part~='button'] {
     background: rgba(var(--md-sys-color-on-surface-rgb), 0.12);
     box-shadow: none;
     color: rgba(var(--md-sys-color-on-surface-rgb), 0.38);
+  }
+  @media (hover: hover) {
+    :host([variant='filled']) [part~='button']:hover:not(:active) {
+      box-shadow: var(--md-sys-elev-shadow-1);
+    }
+    :host([variant='elevated']) [part~='button']:hover:not(:active) {
+      box-shadow: var(--md-sys-elev-shadow-2);
+    }
   }
 
   [part='leading-root'],

@@ -76,7 +76,7 @@ export default class BaseButton extends FocusMixin(BaseElement) {
   override render() {
     return html`
     <${this.custom || 'button'}
-      part="button focus-controller"
+      part="button focus"
       ${ifDefined('disabled', this.disabled, true)}
       ${ifDefined('role', this.role)}
       ${ifDefined('aria-label', this.ariaLabel)}
