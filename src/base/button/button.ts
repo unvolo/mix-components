@@ -8,6 +8,7 @@ export const BaseButtonStyles = css`
     display: inline-flex;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    vertical-align: top;
     touch-action: manipulation;
   }
   :host([disabled]) {
@@ -30,11 +31,13 @@ export const BaseButtonStyles = css`
     inline-size: 100%;
     justify-content: center;
     margin: 0;
-    /* outline: none; */
+    outline: none;
     padding: 0;
     position: relative;
     text-decoration: none;
     user-select: none;
+    vertical-align: middle;
+    z-index: 0;
   }
 `
 
@@ -73,23 +76,15 @@ export default class BaseButton extends FocusMixin(BaseElement) {
   override render() {
     return html`
     <${this.custom || 'button'}
-      part="button"
+      part="button focus-controller"
       ${ifDefined('disabled', this.disabled, true)}
       ${ifDefined('role', this.role)}
       ${ifDefined('aria-label', this.ariaLabel)}
-      ${
-        this.ariaLabelledby
-          ? 'aria-labelledby="' + this.ariaLabelledby + '"'
-          : ''
-      }
-      ${
-        this.ariaDescribedby
-          ? 'aria-describedby="' + this.ariaDescribedby + '"'
-          : ''
-      }
-      ${this.ariaHasPopup ? 'aria-haspopup="' + this.ariaHasPopup + '"' : ''}
-      ${this.ariaExpanded ? 'aria-expanded="' + this.ariaExpanded + '"' : ''}
-      ${this.ariaControls ? 'aria-controls="' + this.ariaControls + '"' : ''}
+      ${ifDefined('aria-labelledby', this.ariaLabelledby)}
+      ${ifDefined('aria-describedby', this.ariaDescribedby)}
+      ${ifDefined('aria-haspopup', this.ariaHasPopup)}
+      ${ifDefined('aria-expanded', this.ariaExpanded)}
+      ${ifDefined('aria-controls', this.ariaControls)}
       >
       ${this.renderContents()}
     </${(this.custom || 'button').split(' ')[0]}>

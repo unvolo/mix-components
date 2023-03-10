@@ -29,20 +29,6 @@
     </md-button>
     <md-button variant="filled" custom="a href='#'">Link</md-button>
 
-    <div
-      style="
-        cursor: pointer;
-        border: 1px solid var(--md-sys-color-outline);
-        border-radius: var(--md-sys-shape-corner-large);
-        height: 500px;
-        width: 500px;
-      "
-      tabindex="0"
-      aria-label="A box with ripple"
-    >
-      <md-ripple></md-ripple>
-    </div>
-
     <ul class="fake-md-list">
       <li>This the first list item...<md-ripple></md-ripple></li>
       <li>This the second list item...<md-ripple></md-ripple></li>
@@ -55,14 +41,6 @@
     </ul>
 
     <script type="module">
-      /** @type {HTMLButtonElement} */
-      const btn = document.querySelector('md-button')
-      btn.addEventListener('click', (e) => {
-        btn.disabled = true
-        setTimeout(() => {
-          btn.disabled = false
-        }, 2000)
-      })
       import { TypographySystem } from '../src/m3/styles/index.ts'
       const styles = document.createElement('style')
       styles.innerText = `.fake-md-list li { ${TypographySystem.generateStyle(

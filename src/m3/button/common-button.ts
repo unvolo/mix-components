@@ -1,6 +1,8 @@
 import BaseButton from '../../base/button/button.js'
 import { html, css } from '../../utils/template.js'
 import { TypographySystem } from '../styles/index.js'
+import StateLayerStyles from '../styles/state-layer-styles.js'
+import FocusRingStyles from '../styles/focus-ring-styles.js'
 
 import '../shared/target.js'
 import '../ripple/ripple.js'
@@ -126,7 +128,12 @@ export default class M3CommonButton extends BaseButton {
     `
   }
   override styles() {
-    return [...super.styles(), M3CommonButtonStyles]
+    return [
+      ...super.styles(),
+      M3CommonButtonStyles,
+      StateLayerStyles,
+      FocusRingStyles,
+    ]
   }
 
   get $ripple() {
