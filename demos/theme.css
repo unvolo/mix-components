@@ -199,3 +199,29 @@
   --md-sys-typescale-title-large-letter-spacing: 0px;
   --md-sys-typescale-title-large-line-height: 28px;
 }
+
+.fake-md-list {
+  all: unset;
+  max-width: 512px;
+  padding: 8px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.fake-md-list li {
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-inline-start: 16px;
+  padding-inline-end: 24px;
+  outline: 0px;
+  height: 56px;
+  color: var(--md-sys-color-on-background);
+}

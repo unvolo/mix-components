@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      onload="this.onload=null; this.rel='stylesheet';"
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
-      rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.0-beta.2/dist/iconify-icon.min.js"></script>
 
     <link rel="stylesheet" href="../demos/theme.css" />
     <link rel="stylesheet" href="../src/m3/styles/index.css" />
     <script type="module" src="../src/m3/button/common-button.ts"></script>
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.0-beta.2/dist/iconify-icon.min.js"></script>
+    <script type="module" src="../src/m3/divider/divider.ts"></script>
   </head>
   <body>
     <md-button variant="outlined" leading>
@@ -42,7 +43,18 @@
       <md-ripple></md-ripple>
     </div>
 
-    <script>
+    <ul class="fake-md-list">
+      <li>This the first list item...<md-ripple></md-ripple></li>
+      <li>This the second list item...<md-ripple></md-ripple></li>
+      <li>This the third list item...<md-ripple></md-ripple></li>
+      <md-divider></md-divider>
+      <li>Aaaaaaaaaaaaaaaa...<md-ripple></md-ripple></li>
+      <li>Aaaaaaaaaaaaaaaa...<md-ripple></md-ripple></li>
+      <li>Aaaaaaaaaaaaaaaa...<md-ripple></md-ripple></li>
+      <li>Aaaaaaaaaaaaaaaa...<md-ripple></md-ripple></li>
+    </ul>
+
+    <script type="module">
       /** @type {HTMLButtonElement} */
       const btn = document.querySelector('md-button')
       btn.addEventListener('click', (e) => {
@@ -51,6 +63,12 @@
           btn.disabled = false
         }, 2000)
       })
+      import { TypographySystem } from '../src/m3/styles/index.ts'
+      const styles = document.createElement('style')
+      styles.innerText = `.fake-md-list li { ${TypographySystem.generateStyle(
+        'body-large'
+      )} }`
+      document.head.appendChild(styles)
     </script>
   </body>
 </html>

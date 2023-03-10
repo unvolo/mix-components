@@ -93,7 +93,7 @@ export default class BaseElement extends HTMLElement {
     }
     this.removeAttribute(name)
   }
-  defaultAttrs?: object
+  defaultAttrs?: object = {}
   _fillDefaultAttrs() {
     for (let key of Object.keys(this.defaultAttrs)) {
       // @ts-ignore
