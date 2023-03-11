@@ -11,7 +11,8 @@ export const M3CommonButtonStyles = css`
   [part~='button'] {
     border-radius: var(--md-sys-shape-corner-full);
     height: 40px;
-    transition: box-shadow var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+    transition: box-shadow var(--md-sys-motion-duration-medium2)
+      var(--md-sys-motion-easing-standard);
     z-index: var(--md-sys-elev-0);
 
     ${TypographySystem.generateStyle('label-large')}
@@ -55,7 +56,7 @@ export const M3CommonButtonStyles = css`
     color: var(--md-button-on-theme-color);
     padding: 0 24px;
   }
-  :host([variant='filled-tonal']) [part~='button'] {
+  :host([variant='filled tonal']) [part~='button'] {
     background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
     padding: 0 24px;
@@ -74,7 +75,7 @@ export const M3CommonButtonStyles = css`
     color: rgba(var(--md-sys-color-on-surface-rgb), 0.38);
   }
   @media (hover: hover) {
-    :host([variant='filled']) [part~='button']:hover:not(:active) {
+    :host([variant~='filled']) [part~='button']:hover:not(:active) {
       box-shadow: var(--md-sys-elev-shadow-1);
     }
     :host([variant='elevated']) [part~='button']:hover:not(:active) {

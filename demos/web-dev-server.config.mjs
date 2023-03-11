@@ -4,7 +4,7 @@ export default {
   open: 'demos',
   nodeResolve: true,
   watch: true,
-  port: 8080,
+  port: 8000,
   appIndex: 'demos/index.html',
   plugins: [
     esbuildPlugin({

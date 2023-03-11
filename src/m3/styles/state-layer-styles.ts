@@ -6,6 +6,8 @@ const StateLayerStyles = css`
     inset: 0;
     border-radius: inherit;
     background-color: currentColor;
+    transition: opacity var(--md-sys-motion-duration-medium2)
+      var(--md-sys-motion-easing-standard);
     opacity: 0;
     z-index: 1;
   }
