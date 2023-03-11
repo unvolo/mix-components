@@ -1,4 +1,4 @@
-import BaseButton from '../../base/button/button.js'
+import BaseButton from '../../base/base/button.js'
 import { html, css } from '../../utils/template.js'
 import { TypographySystem } from '../styles/index.js'
 import StateLayerStyles from '../styles/state-layer-styles.js'

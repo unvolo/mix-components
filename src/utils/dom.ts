@@ -1,3 +1,44 @@
+export function* composedAncestors(node: Node | null) {
+  let current: Node | null = node
+  while (true) {
+    current =
+      current instanceof HTMLElement && current.assignedSlot
+        ? current.assignedSlot
+        : current instanceof ShadowRoot
+        ? current.host
+        : current.parentNode
+    if (current) {
+      yield current
+    } else {
+      break
+    }
+  }
+}
+
+export function* selfAndComposedAncestors(node: Node | null) {
+  if (node) {
+    yield node
+    yield* composedAncestors(node)
+  }
+}
+
+export function closestFocusableNode(node: Node | null) {
+  for (const current of selfAndComposedAncestors(node)) {
+    // @ts-ignore
+    const target = current.focusTarget || current
+    const cast: any = target
+    const focusable =
+      target instanceof HTMLElement &&
+      target.tabIndex >= 0 &&
+      !cast.disabled &&
+      !(target instanceof HTMLSlotElement)
+    if (focusable) {
+      return target
+    }
+  }
+  return null
+}
+
 /**
  * Return the first focusable element in the composed tree below the given root.
  * The composed tree includes nodes assigned to slots.

@@ -19,9 +19,9 @@ window.addEventListener(
 )
 
 /**
- * @module FocusMixin
+ * @module FocusDetectMixin
  */
-export default function FocusMixin(Base: Constructor<BaseElement>) {
+export default function FocusDetectMixin(Base: Constructor<BaseElement>) {
   return class Focus extends Base {
     _handleFocus(_e: FocusEvent) {
       const from = fromKeyboard ? 'keyboard' : 'pointer'

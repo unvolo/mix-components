@@ -1,5 +1,7 @@
 import BaseElement from '../base/element.js'
-import FocusMixin from '../mixins/focus-mixin.js'
+import ComposedFocusMixin from '../mixins/composed-focus-mixin.js'
+import DelegateFocusMixin from '../mixins/delegate-focus-mixin.js'
+import FocusDetectMixin from '../mixins/focus-detect-mixin.js'
 import { html, css } from '../../utils/template.js'
 import { dataPrefixed, ifDefined } from '../../utils/attributes.js'
 
@@ -71,8 +73,9 @@ const dataPAttrs = {
  * - Toggle Button (https://www.w3.org/WAI/ARIA/apg/patterns/button/)
  * - Menu Button (https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/)
  */
-export default class BaseButton extends FocusMixin(BaseElement) {
-  override delegatesFocus = true
+export default class BaseButton extends ComposedFocusMixin(
+  DelegateFocusMixin(FocusDetectMixin(BaseElement))
+) {
   override render() {
     return html`
     <${this.custom || 'button'}
