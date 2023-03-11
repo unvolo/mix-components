@@ -7,9 +7,10 @@ export default class BaseElement extends HTMLElement {
   constructor() {
     super()
     this._render()
+    this._fillDefaultAttrs()
   }
 
-  delegatesFocus? = false
+  delegatesFocus: boolean = false
   _render() {
     const _shadowRoot =
       this.shadowRoot ||
@@ -38,9 +39,7 @@ export default class BaseElement extends HTMLElement {
 
     if (Object.keys(this.defaultAttrs).includes(name)) this._fillDefaultAttrs()
   }
-  connectedCallback(): void {
-    this._fillDefaultAttrs()
-  }
+  connectedCallback?(): void {}
   disconnectedCallback?(): void
 
   // Utils
