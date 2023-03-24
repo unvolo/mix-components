@@ -177,8 +177,8 @@ export default class BaseButton extends ComposedFocusMixin(
     oldValue: string | undefined,
     newValue: string | undefined
   ) {
-    super.attributeChangedCallback?.(name, oldValue, newValue)
     if (oldValue === newValue) return
+    super.attributeChangedCallback?.(name, oldValue, newValue)
 
     if (attrs.bool.includes(name))
       this._syncAttribute(this.$button, name, Boolean)

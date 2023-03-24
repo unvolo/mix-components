@@ -208,6 +208,7 @@ export default class M3Ripple extends BaseElement {
   }
 
   override connectedCallback() {
+    super.connectedCallback()
     // @ts-ignore
     this.$parent =
       this.parentNode?.nodeType === 11

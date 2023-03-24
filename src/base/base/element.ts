@@ -6,11 +6,11 @@ export type PropertyTypes =
 export default class BaseElement extends HTMLElement {
   constructor() {
     super()
-    this._render()
-    this._fillDefaultAttrs()
   }
 
   delegatesFocus: boolean = false
+
+  renderTimes = 0
   _render() {
     const _shadowRoot =
       this.shadowRoot ||
@@ -21,6 +21,7 @@ export default class BaseElement extends HTMLElement {
       ...document.adoptedStyleSheets,
       ...this.styles(),
     ]
+    this.renderTimes++
   }
   render?(): DocumentFragment {
     return new DocumentFragment()
@@ -39,7 +40,10 @@ export default class BaseElement extends HTMLElement {
 
     if (Object.keys(this.defaultAttrs).includes(name)) this._fillDefaultAttrs()
   }
-  connectedCallback?(): void {}
+  connectedCallback(): void {
+    this._fillDefaultAttrs()
+    this._render()
+  }
   disconnectedCallback?(): void
 
   // Utils

@@ -103,7 +103,11 @@ export const M3CommonButtonStyles = css`
     padding-inline-start: 16px;
     padding-inline-end: 20px;
   }
+  ::slotted(md-icon),
+  ::slotted(md-animated-icon),
   ::slotted(iconify-icon) {
+    width: 1.125rem;
+    height: 1.125rem;
     font-size: var(--md-button-icon-size, 1.125rem);
   }
 `

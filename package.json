@@ -9,13 +9,13 @@
     "build": "tsc --pretty",
     "build:watch": "tsc --pretty --watch",
     "clean": "rm -f src/**/*.js src/**/*.js.map src/**/*.d.ts src/**/**/*.js src/**/**/*.js.map src/**/**/*.d.ts",
-    "dev": "wds --config 'demos/web-dev-server.config.mjs'",
+    "dev": "web-dev-server",
     "format": "prettier . --write"
   },
   "keywords": [],
   "devDependencies": {
-    "@web/dev-server": "^0.1.35",
-    "@web/dev-server-esbuild": "^0.3.3",
+    "@web/dev-server": "^0.1.36",
+    "@web/dev-server-esbuild": "^0.3.4",
     "typescript": "^4.9.5"
   },
   "dependencies": {
