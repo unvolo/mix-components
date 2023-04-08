@@ -1,5 +1,5 @@
-import BaseElement from '../../base/base/element.js'
-import { css } from '../../utils/template.js'
+import BaseElement from '../../base/base/element.js';
+import { css } from '../../utils/template.js';
 
 export const M3DividerStyles = css`
   :host {
@@ -32,44 +32,44 @@ export const M3DividerStyles = css`
       background: CanvasText;
     }
   }
-`
+`;
 
 const attrs = {
   bool: ['inset', 'inset-start', 'inset-end'],
-}
+};
 
 export default class M3Divider extends BaseElement {
   override styles(): CSSStyleSheet[] {
-    return [M3DividerStyles]
+    return [M3DividerStyles];
   }
 
   static get observedAttributes() {
-    return [...attrs.bool]
+    return [...attrs.bool];
   }
 
   get inset() {
-    return this.hasAttribute('inset')
+    return this.hasAttribute('inset');
   }
   set inset(value: boolean) {
-    this.toggleAttribute('inset', value)
+    this.toggleAttribute('inset', value);
   }
   get insetStart() {
-    return this.hasAttribute('inset-start')
+    return this.hasAttribute('inset-start');
   }
   set insetStart(value: boolean) {
-    this.toggleAttribute('inset-start', value)
+    this.toggleAttribute('inset-start', value);
   }
   get insetEnd() {
-    return this.hasAttribute('inset-end')
+    return this.hasAttribute('inset-end');
   }
   set insetEnd(value: boolean) {
-    this.toggleAttribute('inset-end', value)
+    this.toggleAttribute('inset-end', value);
   }
 }
 
-customElements.define('md-divider', M3Divider)
+customElements.define('md-divider', M3Divider);
 declare global {
   interface HTMLElementTagNameMap {
-    'md-divider': M3Divider
+    'md-divider': M3Divider;
   }
 }

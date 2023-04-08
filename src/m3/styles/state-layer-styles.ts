@@ -1,4 +1,4 @@
-import { css } from '../../utils/template.js'
+import { css } from '../../utils/template.js';
 
 const StateLayerStyles = css`
   [part~='state-layer'] {
@@ -19,6 +19,6 @@ const StateLayerStyles = css`
       opacity: var(--md-sys-states-hover, 0.08);
     }
   }
-`
+`;
 
-export default StateLayerStyles
+export default StateLayerStyles;

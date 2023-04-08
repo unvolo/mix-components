@@ -1,4 +1,4 @@
-import '../../src/m3/button/common-button.js'
+import '../../src/m3/button/common-button.js';
 
 const CompsView = {
   render: async () => {
@@ -15,8 +15,8 @@ const CompsView = {
           </div>
         </div>
       </div>
-    `
+    `;
   },
-}
+};
 
-export default CompsView
+export default CompsView;

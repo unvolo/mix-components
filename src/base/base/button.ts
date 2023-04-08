@@ -1,9 +1,9 @@
-import BaseElement from '../base/element.js'
-import ComposedFocusMixin from '../mixins/composed-focus-mixin.js'
-import DelegateFocusMixin from '../mixins/delegate-focus-mixin.js'
-import FocusDetectMixin from '../mixins/focus-detect-mixin.js'
-import { html, css } from '../../utils/template.js'
-import { dataPrefixed, ifDefined } from '../../utils/attributes.js'
+import BaseElement from '../base/element.js';
+import ComposedFocusMixin from '../mixins/composed-focus-mixin.js';
+import DelegateFocusMixin from '../mixins/delegate-focus-mixin.js';
+import FocusDetectMixin from '../mixins/focus-detect-mixin.js';
+import { html, css } from '../../utils/template.js';
+import { dataPrefixed, ifDefined } from '../../utils/attributes.js';
 
 export const BaseButtonStyles = css`
   :host {
@@ -41,7 +41,7 @@ export const BaseButtonStyles = css`
     vertical-align: middle;
     z-index: 0;
   }
-`
+`;
 
 /**
  * Attributes
@@ -49,7 +49,7 @@ export const BaseButtonStyles = css`
 const attrs = {
   string: ['label'],
   bool: ['disabled'],
-}
+};
 /**
  * Data prefixed attributes ('data-')
  */
@@ -63,7 +63,7 @@ const dataPAttrs = {
     'aria-expanded',
     'aria-controls',
   ]),
-}
+};
 
 /**
  * Base Button class
@@ -91,85 +91,85 @@ export default class BaseButton extends ComposedFocusMixin(
       >
       ${this.renderContents()}
     </${(this.custom || 'button').split(' ')[0]}>
-    `
+    `;
   }
   renderContents() {
-    return html`<slot></slot>`
+    return html`<slot></slot>`;
   }
   override styles() {
-    return [BaseButtonStyles]
+    return [BaseButtonStyles];
   }
 
   get $button(): HTMLButtonElement {
-    return this.$('[part~="button"]')
+    return this.$('[part~="button"]');
   }
 
   static get observedAttributes() {
-    return [...attrs.string, ...attrs.bool, ...dataPAttrs.string.all]
+    return [...attrs.string, ...attrs.bool, ...dataPAttrs.string.all];
   }
 
   get disabled() {
-    return this.hasAttribute('disabled')
+    return this.hasAttribute('disabled');
   }
   set disabled(value: boolean) {
-    this.toggleAttribute('disabled', value)
+    this.toggleAttribute('disabled', value);
   }
 
   get custom() {
-    return this.getAttribute('custom')
+    return this.getAttribute('custom');
   }
   set custom(value: string) {
-    this.setAttribute('custom', value)
+    this.setAttribute('custom', value);
   }
 
   // ARIA Attributes
   override get role() {
-    return this.getAttribute('data-role')
+    return this.getAttribute('data-role');
   }
   override set role(value) {
-    this.setAttribute('data-role', value)
+    this.setAttribute('data-role', value);
   }
 
   override get ariaLabel() {
-    return this.getAttribute('data-aria-label')
+    return this.getAttribute('data-aria-label');
   }
   override set ariaLabel(value) {
-    this.setAttribute('data-aria-label', value)
+    this.setAttribute('data-aria-label', value);
   }
 
   get ariaLabelledby() {
-    return this.getAttribute('data-aria-labelledby')
+    return this.getAttribute('data-aria-labelledby');
   }
   set ariaLabelledby(value) {
-    this.setAttribute('data-aria-labelledby', value)
+    this.setAttribute('data-aria-labelledby', value);
   }
 
   get ariaDescribedby() {
-    return this.getAttribute('data-aria-describedby')
+    return this.getAttribute('data-aria-describedby');
   }
   set ariaDescribedby(value) {
-    this.setAttribute('data-aria-describedby', value)
+    this.setAttribute('data-aria-describedby', value);
   }
 
   override get ariaHasPopup() {
-    return this.getAttribute('data-aria-haspopup')
+    return this.getAttribute('data-aria-haspopup');
   }
   override set ariaHasPopup(value) {
-    this.setAttribute('data-aria-haspopup', value)
+    this.setAttribute('data-aria-haspopup', value);
   }
 
   override get ariaExpanded() {
-    return this.getAttribute('data-aria-expanded')
+    return this.getAttribute('data-aria-expanded');
   }
   override set ariaExpanded(value) {
-    this.setAttribute('data-aria-expanded', value)
+    this.setAttribute('data-aria-expanded', value);
   }
 
   get ariaControls() {
-    return this.getAttribute('data-aria-controls')
+    return this.getAttribute('data-aria-controls');
   }
   set ariaControls(value) {
-    this.setAttribute('data-aria-controls', value)
+    this.setAttribute('data-aria-controls', value);
   }
 
   override attributeChangedCallback(
@@ -177,25 +177,25 @@ export default class BaseButton extends ComposedFocusMixin(
     oldValue: string | undefined,
     newValue: string | undefined
   ) {
-    if (oldValue === newValue) return
-    super.attributeChangedCallback?.(name, oldValue, newValue)
+    if (oldValue === newValue) return;
+    super.attributeChangedCallback?.(name, oldValue, newValue);
 
     if (attrs.bool.includes(name))
-      this._syncAttribute(this.$button, name, Boolean)
-    else if (name === 'custom') this.render()
+      this._syncAttribute(this.$button, name, Boolean);
+    else if (name === 'custom') this.render();
     else if (dataPAttrs.string.unprefixed.includes(name))
-      this._fixNotDataPAttr(name, String)
+      this._fixNotDataPAttr(name, String);
     else if (dataPAttrs.string.prefixed.includes(name))
-      this._syncAttribute(this.$button, name, String, true)
+      this._syncAttribute(this.$button, name, String, true);
   }
 
   override focus() {
-    this.$button.focus()
+    this.$button.focus();
   }
   override blur() {
-    this.$button.blur()
+    this.$button.blur();
   }
   override click() {
-    this.$button.click()
+    this.$button.click();
   }
 }

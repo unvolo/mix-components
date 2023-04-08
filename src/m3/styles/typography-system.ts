@@ -17,7 +17,7 @@ export type types =
   | 'label-small'
   | 'body-large'
   | 'body-medium'
-  | 'body-small'
+  | 'body-small';
 
 export function generateStyle(variantName: types) {
   return [
@@ -26,5 +26,5 @@ export function generateStyle(variantName: types) {
     `font-size: var(--md-sys-typescale-${variantName}-font-size);`,
     `letter-spacing: var(--md-sys-typescale-${variantName}-letter-spacing);`,
     `line-height: var(--md-sys-typescale-${variantName}-line-height);`,
-  ].join('')
+  ].join('');
 }

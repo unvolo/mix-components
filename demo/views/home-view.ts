@@ -7,8 +7,8 @@ const HomeView = {
 
       <a router-link href="/demos/comps">Components</a>
       <a router-link href="/demos/lab">Lab</a>
-    `
+    `;
   },
-}
+};
 
-export default HomeView
+export default HomeView;

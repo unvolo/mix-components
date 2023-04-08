@@ -1,4 +1,4 @@
-import { css } from '../../utils/template.js'
+import { css } from '../../utils/template.js';
 
 const FocusRingStyles = css`
   [part~='focus-ring'] {
@@ -33,6 +33,6 @@ const FocusRingStyles = css`
   :host([focus='keyboard']) [part~='focus-ring'] {
     display: block;
   }
-`
+`;
 
-export default FocusRingStyles
+export default FocusRingStyles;

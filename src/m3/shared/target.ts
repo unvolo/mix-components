@@ -1,5 +1,5 @@
-import BaseElement from '../../base/base/element.js'
-import { css } from '../../utils/template.js'
+import BaseElement from '../../base/base/element.js';
+import { css } from '../../utils/template.js';
 
 export const M3TargetStyles = css`
   :host {
@@ -13,23 +13,23 @@ export const M3TargetStyles = css`
     transform: translate(-50%, -50%);
     width: 100%;
   }
-`
+`;
 
 const defaultAttrs = {
   'aria-hidden': 'true',
-}
+};
 
 export default class M3Target extends BaseElement {
   override styles(): CSSStyleSheet[] {
-    return [M3TargetStyles]
+    return [M3TargetStyles];
   }
 
-  override defaultAttrs = defaultAttrs
+  override defaultAttrs = defaultAttrs;
 }
 
-customElements.define('md-target', M3Target)
+customElements.define('md-target', M3Target);
 declare global {
   interface HTMLElementTagNameMap {
-    'md-target': M3Target
+    'md-target': M3Target;
   }
 }

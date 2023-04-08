@@ -4,8 +4,8 @@ const AboutView = {
       <h1>About</h1>
 
       <p>About...</p>
-    `
+    `;
   },
-}
+};
 
-export default AboutView
+export default AboutView;

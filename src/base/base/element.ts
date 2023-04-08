@@ -1,54 +1,54 @@
 export type PropertyTypes =
   | StringConstructor
   | BooleanConstructor
-  | NumberConstructor
+  | NumberConstructor;
 
 export default class BaseElement extends HTMLElement {
   constructor() {
-    super()
+    super();
   }
 
-  delegatesFocus: boolean = false
+  delegatesFocus: boolean = false;
 
-  renderTimes = 0
+  renderTimes = 0;
   _render() {
     const _shadowRoot =
       this.shadowRoot ||
-      this.attachShadow({ mode: 'open', delegatesFocus: this.delegatesFocus })
-    _shadowRoot.innerHTML = ``
-    _shadowRoot.appendChild(this.render().cloneNode(true))
+      this.attachShadow({ mode: 'open', delegatesFocus: this.delegatesFocus });
+    _shadowRoot.innerHTML = ``;
+    _shadowRoot.appendChild(this.render().cloneNode(true));
     _shadowRoot.adoptedStyleSheets = [
       ...document.adoptedStyleSheets,
       ...this.styles(),
-    ]
-    this.renderTimes++
+    ];
+    this.renderTimes++;
   }
   render?(): DocumentFragment {
-    return new DocumentFragment()
+    return new DocumentFragment();
   }
   styles?(): Array<CSSStyleSheet> {
-    return []
+    return [];
   }
 
-  adoptedCallback?(): void
+  adoptedCallback?(): void;
   attributeChangedCallback(
     name: string,
     oldValue: string | undefined,
     newValue: string | undefined
   ): void {
-    if (oldValue === newValue) return
+    if (oldValue === newValue) return;
 
-    if (Object.keys(this.defaultAttrs).includes(name)) this._fillDefaultAttrs()
+    if (Object.keys(this.defaultAttrs).includes(name)) this._fillDefaultAttrs();
   }
   connectedCallback(): void {
-    this._fillDefaultAttrs()
-    this._render()
+    this._fillDefaultAttrs();
+    this._render();
   }
-  disconnectedCallback?(): void
+  disconnectedCallback?(): void;
 
   // Utils
   $(selectors: string): any {
-    return this.shadowRoot.querySelector(selectors)
+    return this.shadowRoot.querySelector(selectors);
   }
   _syncAttribute(
     target: HTMLElement,
@@ -56,52 +56,52 @@ export default class BaseElement extends HTMLElement {
     type: PropertyTypes,
     dataPrefix: boolean = false
   ) {
-    name = dataPrefix ? name.replace('data-', '') : name
-    let outerName = `${dataPrefix ? 'data-' : ''}${name}`
+    name = dataPrefix ? name.replace('data-', '') : name;
+    let outerName = `${dataPrefix ? 'data-' : ''}${name}`;
     switch (type) {
       case String:
       case Number:
         this.hasAttribute(outerName)
           ? target.setAttribute(name, this.getAttribute(outerName))
-          : target.removeAttribute(name)
-        break
+          : target.removeAttribute(name);
+        break;
 
       case Boolean:
-        target.toggleAttribute(name, this.hasAttribute(outerName))
-        break
+        target.toggleAttribute(name, this.hasAttribute(outerName));
+        break;
 
       default:
-        break
+        break;
     }
   }
-  #spinLockOfAttrRemoving = 0
+  #spinLockOfAttrRemoving = 0;
   _fixNotDataPAttr(name: string, type: PropertyTypes) {
     if (this.#spinLockOfAttrRemoving) {
-      this.#spinLockOfAttrRemoving--
-      return
+      this.#spinLockOfAttrRemoving--;
+      return;
     }
-    this.#spinLockOfAttrRemoving++
+    this.#spinLockOfAttrRemoving++;
     switch (type) {
       case String:
       case Number:
-        this.setAttribute('data-' + name, this.getAttribute(name)) // Will active this.syncAttribute
-        break
+        this.setAttribute('data-' + name, this.getAttribute(name)); // Will active this.syncAttribute
+        break;
 
       case Boolean:
-        this.toggleAttribute('data-' + name, this.hasAttribute(name)) // Will active this.syncAttribute
-        break
+        this.toggleAttribute('data-' + name, this.hasAttribute(name)); // Will active this.syncAttribute
+        break;
 
       default:
-        break
+        break;
     }
-    this.removeAttribute(name)
+    this.removeAttribute(name);
   }
-  defaultAttrs?: object = {}
+  defaultAttrs?: object = {};
   _fillDefaultAttrs() {
     for (let key of Object.keys(this.defaultAttrs)) {
       // @ts-ignore
-      const value: string = this.defaultAttrs[key]
-      !this.getAttribute(key) ? this.setAttribute(key, value) : null
+      const value: string = this.defaultAttrs[key];
+      !this.getAttribute(key) ? this.setAttribute(key, value) : null;
     }
   }
 }

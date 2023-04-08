@@ -14,8 +14,8 @@
   },
   "keywords": [],
   "devDependencies": {
-    "@web/dev-server": "^0.1.36",
-    "@web/dev-server-esbuild": "^0.3.4",
+    "@web/dev-server": "^0.1.38",
+    "@web/dev-server-esbuild": "^0.3.6",
     "typescript": "^4.9.5"
   },
   "dependencies": {

@@ -29,15 +29,15 @@
     <div id="app"><main id="router-view"></main></div>
 
     <script>
-      let theme = 'dark'
+      let theme = 'dark';
       themeToggler.addEventListener('click', () => {
-        theme = theme === 'dark' ? 'light' : 'dark'
-        themeIcon.icon = theme === 'dark' ? 'light-to-dark' : 'dark-to-light'
-        document.documentElement.setAttribute('data-md-theme', theme)
+        theme = theme === 'dark' ? 'light' : 'dark';
+        themeIcon.icon = theme === 'dark' ? 'light-to-dark' : 'dark-to-light';
+        document.documentElement.setAttribute('data-md-theme', theme);
         document.head
           .querySelector('head[name="color-scheme"]')
-          .setAttribute('content', theme)
-      })
+          .setAttribute('content', theme);
+      });
     </script>
   </body>
 </html>

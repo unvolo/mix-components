@@ -1,11 +1,11 @@
-import BaseButton from '../../base/base/button.js'
-import { html, css } from '../../utils/template.js'
-import { TypographySystem } from '../styles/index.js'
-import StateLayerStyles from '../styles/state-layer-styles.js'
-import FocusRingStyles from '../styles/focus-ring-styles.js'
+import BaseButton from '../../base/base/button.js';
+import { html, css } from '../../utils/template.js';
+import { TypographySystem } from '../styles/index.js';
+import StateLayerStyles from '../styles/state-layer-styles.js';
+import FocusRingStyles from '../styles/focus-ring-styles.js';
 
-import '../shared/target.js'
-import '../ripple/ripple.js'
+import '../shared/target.js';
+import '../ripple/ripple.js';
 
 export const M3CommonButtonStyles = css`
   [part~='button'] {
@@ -110,20 +110,20 @@ export const M3CommonButtonStyles = css`
     height: 1.125rem;
     font-size: var(--md-button-icon-size, 1.125rem);
   }
-`
+`;
 
 const defaultAttrs = {
   variant: 'text',
   color: 'primary',
-}
+};
 
 export type M3CommonButtonVariants =
   | 'text'
   | 'outlined'
   | 'filled'
   | 'filled-tonal'
-  | 'elevated'
-export type M3CommonButtonColors = 'primary' | 'secondary' | 'tertiary'
+  | 'elevated';
+export type M3CommonButtonColors = 'primary' | 'secondary' | 'tertiary';
 
 export default class M3CommonButton extends BaseButton {
   override renderContents() {
@@ -139,7 +139,7 @@ export default class M3CommonButton extends BaseButton {
       <span part="trailing-root"
         ><slot name="trailing" part="trailing"></slot
       ></span>
-    `
+    `;
   }
   override styles() {
     return [
@@ -147,37 +147,37 @@ export default class M3CommonButton extends BaseButton {
       M3CommonButtonStyles,
       StateLayerStyles,
       FocusRingStyles,
-    ]
+    ];
   }
 
   get $ripple() {
-    return this.$('md-ripple')
+    return this.$('md-ripple');
   }
 
   static override get observedAttributes(): string[] {
-    return [...super.observedAttributes, ...Object.keys(defaultAttrs)]
+    return [...super.observedAttributes, ...Object.keys(defaultAttrs)];
   }
 
-  override defaultAttrs = defaultAttrs
+  override defaultAttrs = defaultAttrs;
 
   get variant() {
-    return this.getAttribute('variant') as M3CommonButtonVariants
+    return this.getAttribute('variant') as M3CommonButtonVariants;
   }
   set variant(value: M3CommonButtonVariants) {
-    this.setAttribute('variant', value)
+    this.setAttribute('variant', value);
   }
 
   get color() {
-    return this.getAttribute('color') as M3CommonButtonColors
+    return this.getAttribute('color') as M3CommonButtonColors;
   }
   set color(value: M3CommonButtonColors) {
-    this.setAttribute('color', value)
+    this.setAttribute('color', value);
   }
 }
 
-customElements.define('md-button', M3CommonButton)
+customElements.define('md-button', M3CommonButton);
 declare global {
   interface HTMLElementTagNameMap {
-    'md-button': M3CommonButton
+    'md-button': M3CommonButton;
   }
 }
