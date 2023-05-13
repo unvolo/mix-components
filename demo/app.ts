@@ -81,3 +81,4 @@ window.useRoute = useRoute;
 renderPage();
 
 import '../src/m3/icon/animated-icon.js';
+import '../src/m3/button/icon-button.js';

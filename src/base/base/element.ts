@@ -48,7 +48,9 @@ export default class BaseElement extends HTMLElement {
 
   // Utils
   $(selectors: string): any {
-    return this.shadowRoot.querySelector(selectors);
+    return 'shadowRoot' in this
+      ? this.shadowRoot.querySelector(selectors)
+      : (this as HTMLElement).querySelector(selectors);
   }
   _syncAttribute(
     target: HTMLElement,

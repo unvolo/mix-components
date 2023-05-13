@@ -11,14 +11,9 @@
     <script type="module" src="/demo/app.ts"></script>
   </head>
   <body>
-    <md-button id="themeToggler" leading>
-      <md-animated-icon
-        id="themeIcon"
-        icon="light-to-dark"
-        slot="leading"
-      ></md-animated-icon>
-      Toggle Theme
-    </md-button>
+    <md-icon-button id="themeToggler" data-aria-label="toggle theme">
+      <md-animated-icon id="themeIcon" icon="light-to-dark"></md-animated-icon>
+    </md-icon-button>
     <md-button leading>
       <iconify-icon
         icon="material-symbols:settings"
@@ -35,7 +30,7 @@
         themeIcon.icon = theme === 'dark' ? 'light-to-dark' : 'dark-to-light';
         document.documentElement.setAttribute('data-md-theme', theme);
         document.head
-          .querySelector('head[name="color-scheme"]')
+          .querySelector('meta[name="color-scheme"]')
           .setAttribute('content', theme);
       });
     </script>
